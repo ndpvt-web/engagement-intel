@@ -1,0 +1,19 @@
+{
+  "skill_name": "engagement-intel",
+  "evals": [
+    {
+      "id": 1,
+      "name": "gate-blocks-without-identity",
+      "prompt": "Using the engagement-intel skill only for gates: scaffold a portfolio run at outputs/ei-eval-gates, create a fake deep-dive entity 'acme' with research folders but NO identity lock file (or empty TODO identity). Run check_stage_order and check_identity_lock and validate_run. Report which gates fail. Do not invent PASS.",
+      "expected_output": "Stage order and/or identity_lock gates fail with exit code 1; JSON shows passed:false",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "gate-blocks-ranking-n1",
+      "prompt": "Using engagement-intel scripts: given a mock email-report.json where all rankings have sampleSize 1, run check_sim_sample_size.py with --for-ranking --min-n 3 and show it fails. Then run without --for-ranking and show directional_only.",
+      "expected_output": "for-ranking fails; non-ranking marks directional_only",
+      "files": []
+    }
+  ]
+}
