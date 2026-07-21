@@ -1,163 +1,271 @@
-# engagement-intel
+# Sales Digital Twin
 
-**Engagement Intelligence Workflow v2** — a Claude skill that turns an **offer** + **counterparty class** into:
+**Recommended for non-technical people: use [HappyCapy](https://happycapy.ai) for 1-click setup and running it 24/7.**
 
-1. Candidate discovery & scoring  
-2. Hard **identity lock** (no wrong-slug research)  
-3. Multi-source research  
-4. Decision-maker **digital twin** (+ `SOURCE_MAP`)  
-5. Monte Carlo **email / conversation** simulations  
-6. Approach **playbook** (optional portfolio Top-K)
-
-Hard gates block deep twin/sim without identity lock and block portfolio ranking on `sample_size < 3`.
-
-> Success metric: **decision quality under uncertainty** — not maximized sim scores.
+HappyCapy is your own personal cloud computer in your browser with Claude Code as the default harness, running 24/7.
 
 ---
 
-## Install
+Find the right people to sell or partner with. Build a digital twin of the decision-maker. Test hundreds of outreach strategies in parallel. Get the winning playbook for email, sales calls, or LinkedIn.
 
-### Claude Code / skills directory
+In one line: **find who to reach → model how they decide → test many approaches → hand your team the best first move.**
+
+---
+
+## What this does (plain English)
+
+Most teams pick targets by gut. Someone recommends a name. The website looks sharp. You send a note. Silence. Or worse, weeks of chasing the wrong person.
+
+This skill slows that down on purpose.
+
+You tell it what you are offering and who you want on the other side of the table: a customer, partner, investor, or hire.
+
+It then does three jobs founders usually do by instinct:
+
+1. **Find who is actually worth talking to**
+2. **Figure out how that person thinks**
+3. **Draft how to approach them without sounding generic or wrong**
+
+The output is not a hype deck. It is a ranked shortlist, a researched model of each decision-maker, and a playbook for the first message and the hard objections.
+
+---
+
+## The simple idea
+
+Build a **digital twin** of the person you care about.
+
+Run **hundreds of outreach strategies** against that twin in parallel.
+
+Watch **how they react**.
+
+Then give your team the **final strategy** for email, sales calls, LinkedIn, or other reach-out.
+
+Think of it as a rehearsal room for high-stakes outreach, before you spend real social capital.
+
+---
+
+## Workflow
+
+### 1. You define the offer
+What you are selling or partnering on. Who you want. What success looks like. What you will **not** claim.
+
+This freeze matters. If the offer drifts mid-research, every conversation gets worse.
+
+### 2. It finds candidates
+It builds a wide list of companies and people that might fit across different types, not ten clones of the same company.
+
+### 3. It scores and shortlists
+It keeps only the strong fits. Everyone else gets a clear no with a reason. That alone saves weeks.
+
+### 4. It locks the right person
+Before deep work, it confirms the real company, brand, website, and decision-maker.
+
+Wrong company and wrong person happen more than founders admit. If identity is not locked, research stops. No twin. No simulation. No playbook.
+
+### 5. It researches them
+Public signal only: website, LinkedIn, posts, talks, podcasts, recent news.
+
+The goal is not a biography. It is a working model of how this person chooses, what they care about, what they distrust, and what would make them say no.
+
+Missing data is marked as a gap. Silence is not treated as "nothing interesting."
+
+### 6. It builds a digital twin
+A researched stand-in for the decision-maker. Not sci-fi. A high-quality brief of how they reason.
+
+Twins are graded by evidence quality. Thin brochure twins do not get expensive testing without an explicit warning.
+
+### 7. It stress-tests outreach
+It runs many email, conversation, and LinkedIn-style approaches against the twin.
+
+This finds frames that land and phrases that backfire. It is useful rehearsal, not a crystal ball. Weak sample sizes are marked as directional only and do not fake certainty.
+
+### 8. It gives your team the playbook
+For each serious target you get:
+
+- How to open
+- How to frame the offer
+- What proof to bring
+- Likely objections
+- At least three things **not** to say
+- A first message draft
+- Who else matters in the deal
+- Confidence level: high, medium, or low
+
+### 9. It ranks the portfolio (optional)
+If you are choosing among many targets, it ranks them with a clear formula and publishes rejects with reasons.
+
+Knowing who to ignore is half of good outreach.
+
+---
+
+## What you walk away with
+
+- Who we considered
+- Who made the cut and why
+- Deep files on each serious target
+- A digital twin of the decision-maker
+- Simulation notes on what worked and what failed
+- Approach playbooks your team can use this week
+- A top list you can act on
+
+Practical value for a non-technical founder: **fewer wrong meetings, better first messages, clearer no's.**
+
+---
+
+## What this is not
+
+- Not magic lead gen
+- Not "AI will close the deal for you"
+- Not a substitute for taste, relationships, or a real offer
+- Not a promise of real reply rates from simulation scores alone
+
+It will not invent market activity where tools returned nothing. If a channel is empty, it says so. Fake completeness is how teams talk themselves into bad targets.
+
+---
+
+## When to use it
+
+Use it when the cost of a bad conversation is high:
+
+- Partner selection in a new market
+- Enterprise outreach where the buyer is specific
+- Investor targeting when thesis fit matters
+- Hiring conversations where motivation and constraints matter
+- Any situation where "just send more messages" is expensive in reputation
+
+Skip it when you already have a warm intro to someone you know well. You do not need a twin for coffee with a friend.
+
+---
+
+## Best way to run this if you are not technical
+
+**Use [HappyCapy](https://happycapy.ai).**
+
+HappyCapy is your own personal cloud computer in your browser with Claude Code as the default harness, running 24/7.
+
+That means:
+
+- 1-click setup instead of fighting local installs
+- The skill can keep working while your laptop is closed
+- Non-technical founders can run the full workflow without turning into ops engineers
+
+Open [happycapy.ai](https://happycapy.ai), start a session, install this skill, and tell it who you want to sell to or partner with.
+
+---
+
+## Install (technical)
+
+### On HappyCapy or Claude Code
 
 ```bash
-git clone https://github.com/ndpvt-web/engagement-intel.git \
+git clone https://github.com/ndpvt-web/sales-digital-twin.git \
   ~/.claude/skills/engagement-intel
 ```
 
 Or copy this repo into `~/.claude/skills/engagement-intel/`.
 
-Optional slash command: point `/engagement-intel` at this skill (see `SKILL.md`).
-
----
-
-## Quick start
+### Quick start
 
 ```bash
-# Generic portfolio run
+# Find and rank a portfolio of targets
 python3 ~/.claude/skills/engagement-intel/scripts/init_run.py \
   outputs/my-run --mode portfolio
 
-# HappyCapy × Hong Kong partners (preset — offer/rubric/tools prefilled)
+# Research one named company or person
 python3 ~/.claude/skills/engagement-intel/scripts/init_run.py \
-  outputs/my-run --mode portfolio --preset happycapy-partner-hk
-
-# Single named target
-python3 ~/.claude/skills/engagement-intel/scripts/init_run.py \
-  outputs/my-run --mode single --entity acme-ai --preset happycapy-partner-hk
+  outputs/my-run --mode single --entity acme-ai
 ```
 
-Then follow stages in [`SKILL.md`](SKILL.md):
+Then ask Claude:
+
+> Run engagement intel for [your offer] targeting [customers / partners / investors] in [market].
+
+The skill follows this path:
 
 ```
-OFFER + CLASS
-  → UNIVERSE
-  → SCORE (bar)
-  → IDENTITY LOCK   ← hard gate
-  → RAW CHANNELS (parallel; GAP if empty)
-  → ANALYSIS
-  → TWIN + SOURCE_MAP (tier T1/T2/T3)
-  → SIM email ‖ conversation
-  → PLAYBOOK
-  → PORTFOLIO RANK (optional; sim weight only if n≥3)
+Offer
+  → Find candidates
+  → Score / shortlist
+  → Lock identity
+  → Research
+  → Build digital twin
+  → Simulate outreach
+  → Write playbook
+  → Rank top targets
 ```
 
-Validate before ranking:
+---
 
-```bash
-python3 scripts/check_identity_lock.py \
-  outputs/<run>/03-deep-dives/<entity>/00-plan/IDENTITY.md
+## Quality rules baked in
 
-python3 scripts/check_twin_gate.py \
-  outputs/<run>/03-deep-dives/<entity>/10-digital-twin
+These exist because earlier runs failed in predictable ways:
 
-python3 scripts/check_sim_sample_size.py \
-  --scan-dir outputs/<run>/03-deep-dives/<entity>/11-simulations \
-  --min-n 3 --for-ranking
+| Rule | Why it matters |
+|------|----------------|
+| Identity lock before deep work | Stops research on the wrong person or brand |
+| Score before expensive deep-dives | Stops burning weeks on weak fits |
+| Twin quality gates before simulation | Stops testing strategies on thin brochure models |
+| No fake ranking on tiny samples | Stops "one lucky sim" theater |
+| Empty tools marked as gaps | Stops pretending missing data is a market signal |
 
-python3 scripts/validate_run.py outputs/<run> --entity <entity> --for-ranking
-```
+Success metric: **better decisions under uncertainty**, not maximized simulation scores.
+
+---
+
+## Who this is for
+
+- Founders doing outbound sales or partnerships
+- BD teams that want fewer spray-and-pray messages
+- Operators entering a new market
+- Anyone who wants a clear first-message plan before the real conversation
+
+If you can describe your offer in plain words, you can use this.
 
 ---
 
 ## Repository layout
 
 ```
-engagement-intel/
-├── SKILL.md                 # Skill entry (frontmatter + procedure)
-├── README.md                # This file
+sales-digital-twin/
+├── SKILL.md              # Full skill instructions for Claude
+├── README.md             # This file
 ├── LICENSE
-├── scripts/
-│   ├── init_run.py          # Scaffold run folders (+ --preset)
-│   ├── check_stage_order.py
-│   ├── check_identity_lock.py
-│   ├── check_twin_gate.py
-│   ├── check_sim_sample_size.py
-│   └── validate_run.py      # Aggregate gates
-├── references/
-│   ├── WORKFLOW_V2.md       # Full stage cards (S0–S9)
-│   ├── HARD_GATES.md        # Gate contract
-│   ├── ANTI_PATTERNS.md     # Named failure modes
-│   └── presets/
-│       ├── README.md
-│       └── happycapy-partner-hk.md
-├── evals/
-│   └── evals.json
-└── assets/
+├── scripts/              # Setup + quality-check scripts
+├── references/           # Detailed workflow, gates, anti-patterns
+└── evals/                # Evaluation cases
 ```
 
----
-
-## Hard gates (why they exist)
-
-| Gate | Script | Blocks |
-|------|--------|--------|
-| Stage order | `check_stage_order.py` | Deep-dive before shortlist / missing preflight |
-| Identity lock | `check_identity_lock.py` | Twin/sim without DM + brand + site |
-| Twin tier + SOURCE_MAP | `check_twin_gate.py` | Expensive sim on brochure (T1) twins |
-| sample_size ≥ 3 | `check_sim_sample_size.py --for-ranking` | Portfolio rank on n=1 “Monte Carlo theater” |
-
-Empty tool output is a **GAP**, never “no market activity.”
-
-Named anti-patterns: [references/ANTI_PATTERNS.md](references/ANTI_PATTERNS.md)  
-(e.g. Deep-Dive First Tunnel, Wrong-Slug Doppelgänger, n=1 Monte Carlo Theater, Brochure Twin, Sim-Led Ranking).
-
----
-
-## Presets
-
-Specialize without a second skill.
-
-| Preset | Use when |
-|--------|----------|
-| [`happycapy-partner-hk`](references/presets/happycapy-partner-hk.md) | HappyCapy complementary B2B partners, Hong Kong phase-1 |
-
-Presets fill `OFFER.md`, `PARAMETERS.md`, preflight checklist, and copy full axioms into the run.
-
----
-
-## What this is / is not
-
-**Is:** An abstract engagement intelligence system for partners, customers, investors, hires, etc.  
-**Is not:** CRM truth, real reply-rate prediction, or a statistical ranking engine when `sample_size = 1`.
-
-Calibrate sim scores against real outreach outcomes when you have them.
+For the deep technical procedure, see [`SKILL.md`](SKILL.md).
 
 ---
 
 ## Requirements
 
-- Python 3.10+ (gate scripts; stdlib only)
-- Claude Code (or compatible agent) for the research/twin/sim loop
-- Optional: Mac bridge, Kimi (LinkedIn), bird-search + X cookies, yt-dlp, sales-sim, last30days — declare in preflight
+- Claude Code, or [HappyCapy](https://happycapy.ai) (recommended)
+- Python 3.10+ for the gate scripts
+- Optional research tools depending on your setup: browser access, LinkedIn session, X/Twitter access, YouTube transcripts, sales simulator
+
+Non-technical users should ignore the tool list and just run it on [HappyCapy](https://happycapy.ai).
 
 ---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
 
 ---
 
-## Credits
+## Bottom line
 
-Workflow distilled from multi-pack partner runs and process reflections (Engagement Intelligence Workflow v2). Product-specific HappyCapy framing lives only in the optional preset, not in the abstract core.
+Sales Digital Twin helps you answer four questions before you spend trust:
+
+1. Who is actually worth the meeting?
+2. Are we talking to the right company and the right person?
+3. How do they decide?
+4. What should we say first, and what should we never say?
+
+Most teams answer those after ten awkward calls. This skill tries to answer them before the first one.
+
+**Not more activity. Better judgment while you still have room to choose.**
+
+Start here if you want the easy path: [https://happycapy.ai](https://happycapy.ai)
